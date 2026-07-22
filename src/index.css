@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --yellow-primary: #FFC300;
+  --yellow-dark: #E6A800;
+  --black-bg: #111111;
+  --black-card: #1A1A1A;
+  --black-surface: #222222;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #111111;
+  color: #ffffff;
+  font-family: 'Noto Sans Thai', 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #1A1A1A;
+}
+::-webkit-scrollbar-thumb {
+  background: #FFC300;
+  border-radius: 3px;
+}
+
+/* Hero animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes diagonalMove {
+  0%   { transform: translateX(-100%) rotate(15deg); }
+  100% { transform: translateX(200%) rotate(15deg); }
+}
+
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.hero-title   { animation: fadeInUp 0.8s ease forwards; }
+.hero-sub     { animation: fadeInUp 0.8s ease 0.2s both; }
+.hero-buttons { animation: fadeInUp 0.8s ease 0.4s both; }
+
+.diagonal-line {
+  position: absolute;
+  width: 3px;
+  height: 200%;
+  background: linear-gradient(to bottom, transparent, #FFC30033, transparent);
+  animation: diagonalMove 6s linear infinite;
+}
+
+.ticker-track {
+  display: flex;
+  animation: ticker 20s linear infinite;
+  width: max-content;
+}
+
+/* Card hover effect */
+.product-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 0 2px #FFC300, 0 16px 40px rgba(255,195,0,0.15);
+}
+
+/* Category block hover */
+.cat-block {
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.cat-block:hover {
+  background: #FFC300 !important;
+  color: #111111 !important;
+}
+.cat-block:hover .cat-icon { color: #111111 !important; }
+.cat-block:hover .cat-name { color: #111111 !important; }
+
+/* Dropdown */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 50;
+}
+.dropdown-parent:hover .dropdown-menu { display: block; }
+
+/* Nav scroll shadow */
+.nav-scrolled {
+  box-shadow: 0 4px 24px rgba(255,195,0,0.08);
+}
